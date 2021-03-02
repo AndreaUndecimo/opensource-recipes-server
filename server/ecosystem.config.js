@@ -13,9 +13,9 @@ module.exports = {
       key: "~/.ssh/open_recipes.pem",
       ref: "origin/main",
       repo: "git@github.com:AndreaUndecimo/opensource-recipes-server.git",
-      path: "/home/ubuntu/opensource-recipes-server/server",
+      path: "/home/ubuntu/opensource-recipes-server",
       "post-deploy":
-        "npm install && pm2 startOrRestart server/ecosystem.config.js",
+        "npm install && pm2 startOrRestart ecosystem.config.js",
     },
   },
 };
