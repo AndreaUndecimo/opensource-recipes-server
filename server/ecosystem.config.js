@@ -12,10 +12,10 @@ module.exports = {
       host: "ec2-18-216-123-80.us-east-2.compute.amazonaws.com",
       key: "~/.ssh/open_recipe.pem",
       ref: "origin/master",
-      repo: "git@github.com:AndreaUndecimo/opensource-recipes.git",
-      path: "/home/ubuntu/opensource-recipes",
+      repo: "git@github.com:AndreaUndecimo/opensource-recipes-server.git",
+      path: "/home/ubuntu/opensource-recipes-server",
       "post-deploy":
-        "npm install && pm2 startOrRestart server/ecosystem.config.js",
+        "npm install && pm2 startOrRestart ecosystem.config.js",
     },
   },
 };
