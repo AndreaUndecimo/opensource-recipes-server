@@ -8,12 +8,14 @@ const app = express();
 
 dotenv.config();
 
+const PORT = process.env.PORT || 3800;
+
 app.use(cors());
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.use("/recipe", recipeRouter);
 app.use("/cloudinary", imageRouter);
 
-app.listen(process.env.PORT || 3800, () => {
-  console.log(`Listening on http://localhost:${process.env.PORT}`);
+app.listen(PORT, () => {
+  console.log(`Listening on http://localhost:${PORT}`);
 });
