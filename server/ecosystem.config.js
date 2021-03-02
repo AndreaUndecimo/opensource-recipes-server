@@ -11,7 +11,7 @@ module.exports = {
       user: "ubuntu",
       host: "ec2-18-216-123-80.us-east-2.compute.amazonaws.com",
       key: "~/.ssh/open_recipe.pem",
-      ref: "origin/master",
+      ref: "origin/main",
       repo: "git@github.com:AndreaUndecimo/opensource-recipes-server.git",
       path: "/home/ubuntu/opensource-recipes-server",
       "post-deploy":
