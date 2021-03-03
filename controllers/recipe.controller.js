@@ -46,4 +46,16 @@ async function getSingleRecipe(req, res) {
   }
 }
 
+async function deleteRecipe(req, res) {
+  const {id} = req.body;
+  try {
+    const deleteRecipe = await prisma.recipe.delete({
+    where: {id}
+  })
+  res.status(204).send(deleteRecipe);
+  } catch (error) {
+    res.status(400).send(error)
+  }
+}
+
 module.exports = { createRecipe, getAllRecipes, getSingleRecipe };
