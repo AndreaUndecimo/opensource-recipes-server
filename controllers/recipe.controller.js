@@ -58,4 +58,4 @@ async function deleteRecipe(req, res) {
   }
 }
 
-module.exports = { createRecipe, getAllRecipes, getSingleRecipe };
+module.exports = { createRecipe, getAllRecipes, getSingleRecipe, deleteRecipe };
