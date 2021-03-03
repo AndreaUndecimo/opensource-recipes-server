@@ -5,6 +5,7 @@ files:
     destination: /home/ubuntu/aws-codedeploy
 permissions:
   - object: /home/ubuntu
+    mode: 777
     owner: ubuntu
     group: ubuntu
     type:
