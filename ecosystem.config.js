@@ -12,7 +12,7 @@ module.exports = {
       ref: "origin/main",
       repo: "git@github.com:AndreaUndecimo/opensource-recipes-server.git",
       path: "/home/ubuntu/opensource-recipes-server",
-      "post-deploy": "npm install && npx prisma migrate dev --name init --preview-feature && pm2 startOrRestart ecosystem.config.js",
+      "post-deploy": "npm install && npx prisma generate && pm2 startOrRestart ecosystem.config.js",
     },
   },
 };
