@@ -1,9 +1,18 @@
-const { PrismaClient } = require("@prisma/client");
+const {
+  PrismaClient
+} = require("@prisma/client");
 
 const prisma = new PrismaClient();
 
 async function createRecipe(req, res) {
-  const { title, ingredients, background, name, email, steps } = req.body;
+  const {
+    title,
+    ingredients,
+    background,
+    name,
+    email,
+    steps
+  } = req.body;
 
   try {
     const newRecipe = await prisma.recipe.create({
@@ -23,10 +32,22 @@ async function createRecipe(req, res) {
   }
 }
 
+async function deleteAll(req, res) {
+  try {
+    const deleted = await prisma.recipe.deleteMany({})
+    res.send(deleted)
+  } catch (error) {
+    console.error(error)
+    res.status(401).send('Nope')
+  }
+}
+
 async function getAllRecipes(_, res) {
   try {
     const allRecipes = await prisma.recipe.findMany({
-      include: { images: true },
+      include: {
+        images: true
+      },
     });
     res.status(200).send(allRecipes);
   } catch (error) {
@@ -36,9 +57,13 @@ async function getAllRecipes(_, res) {
 
 async function getSingleRecipe(req, res) {
   try {
-    const { id } = req.body;
+    const {
+      id
+    } = req.body;
     const singleRecipe = await prisma.recipe.findUnique({
-      where: { id },
+      where: {
+        id
+      },
     });
     res.status(200).send(singleRecipe);
   } catch (error) {
@@ -46,16 +71,10 @@ async function getSingleRecipe(req, res) {
   }
 }
 
-async function deleteRecipe(req, res) {
-  const {id} = req.body;
-  try {
-    const deleteRecipe = await prisma.recipe.delete({
-    where: {id}
-  })
-  res.status(204).send(deleteRecipe);
-  } catch (error) {
-    res.status(400).send(error)
-  }
-}
 
-module.exports = { createRecipe, getAllRecipes, getSingleRecipe, deleteRecipe };
+module.exports = {
+  createRecipe,
+  getAllRecipes,
+  getSingleRecipe,
+  deleteAll
+};
