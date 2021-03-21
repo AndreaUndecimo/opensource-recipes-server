@@ -34,7 +34,11 @@ async function createRecipe(req, res) {
 
 async function deleteAll(req, res) {
   try {
-    const deleted = await prisma.recipe.deleteMany({})
+    const deleted = await prisma.recipe.deleteMany({
+      where: {
+        id: typeof id === 'number'
+      }
+    })
     res.send(deleted)
   } catch (error) {
     console.error(error)
